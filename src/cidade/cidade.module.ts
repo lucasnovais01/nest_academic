@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
+import { CidadeControllerFindAll } from './controllers/cidade.controller.findall';
 
 @Module({
   imports: [],
-  controllers: [],
+  controllers: [CidadeControllerFindAll],
   providers: [],
 })
 export class CidadeModule {}

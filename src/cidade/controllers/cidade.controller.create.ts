@@ -1,5 +1,6 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { CidadeRequest } from '../dto/request/cidade.request';
+import { ConverterCidade } from '../dto/converter/cidade.converter';
 
 @Controller('/cidade')
 export class CidadeControllerCreate {
@@ -7,6 +8,9 @@ export class CidadeControllerCreate {
   @Post('/criar')
   create(@Body() cidadeRequest: CidadeRequest) {
     // o método POST é usado para criar novos recursos
-    return cidadeRequest; // Retorna o objeto recebido no corpo da requisição
+    const cidade = ConverterCidade.toCidade(cidadeRequest);
+    const cidadeResponse = ConverterCidade.toCidadeResponse(cidade);
+    return cidadeResponse;
+    //return cidadeRequest; // Retorna o objeto recebido no corpo da requisição
   }
 }
